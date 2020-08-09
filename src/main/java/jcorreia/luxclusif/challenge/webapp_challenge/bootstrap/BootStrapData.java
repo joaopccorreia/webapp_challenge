@@ -21,23 +21,21 @@ public class BootStrapData implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        Client joao = new Client("João", "Correia", 32);
+        Client joao = new Client("João", "Correia", "32", "joaopedro.ccorreia@gmail.com", "913979117");
         Item bag = new Item("Bag", "Gucci");
         joao.getItems().add(bag);
-        bag.getClient().add(joao);
 
         clientRepository.save(joao);
         itemRepository.save(bag);
 
-        Client carol = new Client("Carolina", "Silva", 27);
+        Client carol = new Client("Carolina", "Silva", "27", "carolina.ramosilva@gmail.com", "912922873");
         Item backpack = new Item("Backpack", "Louis Vitton");
         carol.getItems().add(backpack);
-        backpack.getClient().add(carol);
 
         clientRepository.save(carol);
         itemRepository.save(backpack);
 
-        System.out.println("Started in Bootstrap");
         System.out.println("Number of Books: " + itemRepository.count());
+        System.out.println("Client number of items: " + joao.getItems().size());
     }
 }

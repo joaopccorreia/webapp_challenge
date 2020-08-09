@@ -1,7 +1,6 @@
 package jcorreia.luxclusif.challenge.webapp_challenge.domain;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -10,13 +9,12 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String type;
     private String brand;
 
-    @ManyToMany
-    @JoinTable(name = "client_item", joinColumns = @JoinColumn(name = "item_id"),
-            inverseJoinColumns = @JoinColumn(name = "client_id"))
-    private Set<Client> client = new HashSet<>();
+    @ManyToOne
+    private Client client;
 
     public Item() {
     }
@@ -50,11 +48,11 @@ public class Item {
         this.brand = brand;
     }
 
-    public Set<Client> getClient() {
+    public Client getClient() {
         return client;
     }
 
-    public void setClient(Set<Client> client) {
+    public void setClient(Client client) {
         this.client = client;
     }
 

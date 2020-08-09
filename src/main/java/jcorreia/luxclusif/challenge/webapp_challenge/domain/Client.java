@@ -10,20 +10,26 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String firstName;
     private String lastName;
-    private int age;
+    private String age;
+    private String email;
+    private String phone;
 
-    @ManyToMany(mappedBy = "client")
+    @OneToMany
+    @JoinColumn(name = "client_id")
     private Set<Item> items = new HashSet<>();
 
     public Client() {
     }
 
-    public Client(String firstName, String lastName, int age) {
+    public Client(String firstName, String lastName, String age, String email, String phone) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
+        this.email = email;
+        this.phone = phone;
     }
 
     public Long getId() {
@@ -50,12 +56,28 @@ public class Client {
         this.lastName = lastName;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public Set<Item> getItems() {
@@ -72,7 +94,9 @@ public class Client {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", age=" + age +
+                ", age='" + age + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
                 ", items=" + items +
                 '}';
     }
