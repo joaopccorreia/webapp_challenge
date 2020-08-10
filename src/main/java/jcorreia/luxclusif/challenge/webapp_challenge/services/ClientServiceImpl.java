@@ -1,5 +1,6 @@
 package jcorreia.luxclusif.challenge.webapp_challenge.services;
 
+import jcorreia.luxclusif.challenge.webapp_challenge.dao.jpa.JpaClientDao;
 import jcorreia.luxclusif.challenge.webapp_challenge.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

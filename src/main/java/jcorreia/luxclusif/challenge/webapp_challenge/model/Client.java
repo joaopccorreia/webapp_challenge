@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Getter
 @Setter
@@ -36,7 +36,7 @@ public class Client extends GenericModel {
             joinColumns = @JoinColumn(name = "client_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "item_id", referencedColumnName = "id")
     )
-    private Set<Item> items;
+    private List<Item> listOfItems;
 
     @Override
     public String toString() {
@@ -47,7 +47,7 @@ public class Client extends GenericModel {
                 ", email='" + email + '\'' +
                 ", age='" + age + '\'' +
                 ", phone='" + phone + '\'' +
-                ", items=" + items +
+                ", listOfItems=" + listOfItems +
                 '}';
     }
 

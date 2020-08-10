@@ -11,12 +11,9 @@ import javax.persistence.*;
 @Table(name = "item")
 public class Item extends GenericModel {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+    @Column(name = "type")
     private String type;
+
+    @Column(name = "brand")
     private String brand;
-
-
 }
