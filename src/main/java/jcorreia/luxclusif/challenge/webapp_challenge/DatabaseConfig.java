@@ -11,7 +11,7 @@ import javax.sql.DataSource;
 @Configuration
 public class DatabaseConfig {
 
-    @Value()
+    @Value("jdbc:mysql://challenge")
     private String dbUrl;
 
     @Bean
