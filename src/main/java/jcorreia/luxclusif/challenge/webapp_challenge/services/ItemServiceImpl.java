@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 public class ItemServiceImpl implements ItemService {
 
@@ -23,9 +25,22 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public List<Item> listOfItems() {
+        return itemDao.findAll();
+    }
+
+    @Override
     @Transactional
     public Item add(Item item) {
         return itemDao.saveOrUpdate(item);
+    }
+
+    @Override
+    @Transactional
+    public Boolean remove(Item item) {
+        itemDao.delete(item.getId());
+        return get(item.getId()) == null;
     }
 
     @Override

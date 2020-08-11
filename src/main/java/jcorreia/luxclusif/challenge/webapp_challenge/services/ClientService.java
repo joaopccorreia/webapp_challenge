@@ -1,14 +1,19 @@
 package jcorreia.luxclusif.challenge.webapp_challenge.services;
 
 import jcorreia.luxclusif.challenge.webapp_challenge.model.Client;
+import jcorreia.luxclusif.challenge.webapp_challenge.model.Item;
 
 import java.util.List;
 
 public interface ClientService {
 
-    public Client findByClientName(String clientName);
+    Client get(Integer id);
 
-    public Client saveOrUpdate(Client client);
+    Client save(Client client);
 
-    public void delete(String clientName);
+    void delete(Integer id);
+
+    List<Client> list();
+
+    List<Item> listofItems(Integer id);
 }

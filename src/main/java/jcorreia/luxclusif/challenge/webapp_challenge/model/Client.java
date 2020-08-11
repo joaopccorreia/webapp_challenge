@@ -30,6 +30,13 @@ public class Client extends GenericModel {
     @Column(name = "phone")
     private String phone;
 
+    @OneToOne(
+            cascade = CascadeType.ALL,
+            mappedBy = "client",
+            fetch = FetchType.LAZY
+    )
+    private User user;
+
     @OneToMany
     @JoinTable(
             name = "client_item",

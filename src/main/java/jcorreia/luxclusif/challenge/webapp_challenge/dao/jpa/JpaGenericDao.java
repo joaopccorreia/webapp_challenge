@@ -35,4 +35,9 @@ public abstract class JpaGenericDao<T extends Model> implements Dao<T> {
     public T saveOrUpdate(T modelObject) {
         return entityManager.merge(modelObject);
     }
+
+    @Override
+    public void delete(Integer id) {
+        entityManager.remove(entityManager.find(modelType, id));
+    }
 }

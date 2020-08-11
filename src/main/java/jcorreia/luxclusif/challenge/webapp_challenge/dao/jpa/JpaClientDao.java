@@ -14,7 +14,7 @@ public class JpaClientDao extends JpaGenericDao<Client> implements ClientDao {
         super(Client.class);
     }
 
-    public List<Item> findByClientName(Integer clientId) {
+    public List<Item> findItem(Integer clientId) {
         return entityManager.createQuery("from client_item where client_id =" + clientId).getResultList();
     }
 }
